@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import {FiDownload} from "react-icons/fi";
 
 const handleClick = () => {
-  window.open("/Om_Chakane_Resume.pdf", "_blank");
+  window.open("${prefix}/Om_Chakane_Resume.pdf", "_blank");
 };
 
 
