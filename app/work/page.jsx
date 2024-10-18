@@ -17,33 +17,44 @@ import WorkSliderBtns from "@/components/WorkSliderBtns";
 const projects = [
   {
     num: '01',
-    category: "frontend",
+    category: "Wavy: Generating Image from Speech",
     title: "project 1",
     description:
-    "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
-    stack: [{name:"Html 5"}, {name:"Css 3"}, {name: "Javascript"}],
-    image: '/assets/work/thumb1.png',
+    "Generative AI approach to introduce a model to create images based on audio signals, enabling users to express artistic ideas directly through spoken language and expand the scope of image generation through multimodal approaches.",
+    stack: [{name:"Python"}, {name:"CLIP Model"}, {name: "HuBERT"}],
+    image: '/assets/work/thumb1.jpg',
     live: "",
-    github: "",
+    github: "https://github.com/Vishesh-Mittal/Wavy",
   },
   {
     num: '02',
-    category: "fullstack",
+    category: "CaptionIt",
     title: "project 2",
     description:
-    "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
-    stack: [{name:"Next.js"}, {name:"Tailwind.css"}, {name: "Node.js"}],
+    "Web application for generating automatic caption for any type of image.  Users can upload images, and the app instantly provides captions describing the content, making it useful for accessibility and content generation.",
+    stack: [{name:"Python"}, {name:"Tensorflow"}, {name: "Keras"}],
     image: '/assets/work/thumb2.png',
     live: "",
-    github: "",
+    github: "https://github.com/arshadpatel2001/CaptionIt",
   },
   {
     num: '03',
-    category: "fullstack",
+    category: "Subjective Answer Evaluator",
     title: "project 3",
     description:
-    "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic dolorem officiis sequi itaque labore eligendi maiores",
-    stack: [{name:"Next.js"}, {name:"Tailwind.css"}],
+    "Heavily influenced by the infamous Covid Era, this project aims at converting snaps of answer sheet to text using OCR and evaluate the answer based on professor's model answer.",
+    stack: [{name:"Python"}, {name:"LSTM"}, {name:"OCR"}],
+    image: '/assets/work/thumb3.png',
+    live: "",
+    github: "https://github.com/arshadpatel2001/Subjective-Answer-Evaluator",
+  },
+  {
+    num: '04',
+    category: "Persona Leakage in GPT",
+    title: "project 4",
+    description:
+    "Analysis based project aimed at investigating how language models like GPT can unintentionally reveal sensitive or private information about users or system personas during interactions.",
+    stack: [{name:"Python"}, {name:"Neural Networks"}],
     image: '/assets/work/thumb3.png',
     live: "",
     github: "",
@@ -76,7 +87,7 @@ const Work = () => {
               </div>
               <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent
               transition-all duration-500 capitalize">
-                {project.category} project
+                {project.category}
               </h2>
               <p className="text-white/60">{project.description}</p>
               <ul className="flex gap-4">
@@ -91,7 +102,7 @@ const Work = () => {
               </ul>
               <div className="border border-white/20"></div>
               <div className="flex items-center gap-4">
-                <Link href={project.live}>
+                {/* <Link href={project.live}>
                 <TooltipProvider delayDuration={100}> 
                   <Tooltip>
                     <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 
@@ -103,20 +114,22 @@ const Work = () => {
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
-                </Link>
-                <Link href={project.github}>
-                <TooltipProvider delayDuration={100}> 
-                  <Tooltip>
-                    <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 
-                    flex justify-center items-center group">
-                      <BsGithub className="text-white text-3xl group-hover:text-accent"/>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Github repository</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-                </Link>
+                </Link> */}
+                {/* {project.github && (
+  <Link href={project.github}>
+    <TooltipProvider delayDuration={100}> 
+      <Tooltip>
+        <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 
+        flex justify-center items-center group">
+          <BsGithub className="text-white text-3xl group-hover:text-accent"/>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Github repository</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  </Link>
+)} */}
               </div>
             </div>
           </div>
@@ -129,14 +142,54 @@ const Work = () => {
             >
               {projects.map((project, index) => {
                 return (
-                <SwiperSlide key={index} className="w-full">
-                  <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20">
-                  <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-                  <div className="relative w-full h-full">
-                    <Image src={project.image} fill className="object-cover" alt="" />
-                  </div>
-                  </div>
-                  </SwiperSlide>
+<SwiperSlide key={index} className="w-full">
+  {project.github ? (
+    <Link href={project.github} target="_blank" rel="noopener noreferrer" className="w-full">
+      <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+        {/* Gradient overlay effect on hover */}
+        <div className="absolute top-0 bottom-0 w-full h-full bg-gradient-to-t from-black/60 to-transparent z-10 transition-opacity duration-300 group-hover:opacity-90"></div>
+
+        {/* Image zoom-in effect on hover */}
+        <div className="relative w-full h-full overflow-hidden">
+          <Image 
+            src={project.image} 
+            fill 
+            className="object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-110" 
+            alt="" 
+          />
+        </div>
+
+        {/* Stylish hover text with effects */}
+        <div className="absolute z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-100">
+          <div className="bg-white/20 backdrop-blur-md rounded-lg p-4 shadow-lg text-center">
+            <p className="text-lg font-bold text-white">
+              Take me to the Github Repo
+            </p>
+            {/* <span className="text-xl text-white transform transition-transform duration-300 group-hover:translate-x-1">
+              ➡️
+            </span> */}
+          </div>
+        </div>
+      </div>
+    </Link>
+  ) : (
+    <div className="h-[460px] relative flex justify-center items-center bg-pink-50/20">
+      <div className="relative w-full h-full overflow-hidden">
+        <Image 
+          src={project.image} 
+          fill 
+          className="object-cover" 
+          alt="" 
+        />
+      </div>
+      {/* Optional message when no GitHub link is available
+      <p className="absolute z-20 text-gray-500 text-lg font-semibold">
+        No GitHub repo available
+      </p> */}
+    </div>
+  )}
+</SwiperSlide>
+
                 );
               })}
               <WorkSliderBtns 
