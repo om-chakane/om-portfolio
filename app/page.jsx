@@ -7,7 +7,7 @@ import {FiDownload} from "react-icons/fi";
 import { prefix } from './prefix';
 
 const handleClick = () => {
-  window.open("${prefix}/Om_Chakane_Resume.pdf", "_blank");
+  window.open(`${prefix}/Om_Chakane_Resume.pdf`, "_blank");
 };
 
 
