@@ -2,9 +2,8 @@
 const nextConfig = {
     output: 'export',
     basePath: '/om-portfolio'    // Replace 'omchakane' with your repo name
-     env: {
-    NEXT_PUBLIC_BASE_PATH: '/om-portfolio',
-  },
+    assetPrefix: '/om-portfolio/', // Ensure static assets are served with the correct base path
+    trailingSlash: true,
     images: {
       unoptimized: true,
     },
