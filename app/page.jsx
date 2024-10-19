@@ -4,7 +4,6 @@ import Socials from "@/components/Socials";
 import Stats from "@/components/Stats";
 import { Button } from "@/components/ui/button";
 import {FiDownload} from "react-icons/fi";
-import { prefix } from './prefix';
 
 const handleClick = () => {
   window.open("/om-portfolio/Om_Chakane_Resume.pdf", "_blank");
