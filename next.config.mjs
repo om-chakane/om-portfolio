@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
-    basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',    // Replace 'omchakane' with your repo name
+    basePath: '/om-portfolio',    // Replace 'omchakane' with your repo name
     images: {
       unoptimized: true,
     },
