@@ -236,10 +236,10 @@ const Resume = () => {
             </div>
             <div className="logo">
               {item.institution === "University of Southern California" && (
-                <Image src="/assets/uscLogo.png" alt="USC Logo" />
+                <Image src="/om-portfolio/assets/uscLogo.png" alt="USC Logo" />
               )}
               {item.institution === "Vishwakarma Institute of Technology" && (
-                <Image src="/assets/vitLogo.png" alt="VIT Logo" />
+                <Image src="/om-portfolio/assets/vitLogo.png" alt="VIT Logo" />
               )}
             </div>
           </div>
