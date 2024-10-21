@@ -22,7 +22,7 @@ const Photo = () => {
             
             className="w-[350px] h-[350px] xl:w-[500px] xl:h-[500px] mix-blend-lighten absolute">
                 <Image
-                src="/assets/photo.png" priority quality={100} fill
+                src="/om-portfolio/assets/photo.png" priority quality={100} fill
                 alt="" className="object-contain"/>
             </motion.div>
 

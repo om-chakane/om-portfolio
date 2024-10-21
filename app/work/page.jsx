@@ -22,7 +22,7 @@ const projects = [
     description:
     "Generative AI approach to introduce a model to create images based on audio signals, enabling users to express artistic ideas directly through spoken language and expand the scope of image generation through multimodal approaches.",
     stack: [{name:"Python"}, {name:"CLIP Model"}, {name: "HuBERT"}],
-    image: '/assets/work/thumb1.jpg',
+    image: '/om-portfolio/assets/work/thumb1.jpg',
     live: "",
     github: "https://github.com/Vishesh-Mittal/Wavy",
   },
@@ -33,7 +33,7 @@ const projects = [
     description:
     "Web application for generating automatic caption for any type of image.  Users can upload images, and the app instantly provides captions describing the content, making it useful for accessibility and content generation.",
     stack: [{name:"Python"}, {name:"Tensorflow"}, {name: "Keras"}],
-    image: '/assets/work/thumb2.png',
+    image: '/om-portfolio/assets/work/thumb2.png',
     live: "",
     github: "https://github.com/arshadpatel2001/CaptionIt",
   },
@@ -44,7 +44,7 @@ const projects = [
     description:
     "Heavily influenced by the infamous Covid Era, this project aims at converting snaps of answer sheet to text using OCR and evaluate the answer based on professor's model answer.",
     stack: [{name:"Python"}, {name:"LSTM"}, {name:"OCR"}],
-    image: '/assets/work/thumb3.png',
+    image: '/om-portfolio/assets/work/thumb3.png',
     live: "",
     github: "https://github.com/arshadpatel2001/Subjective-Answer-Evaluator",
   },
@@ -55,7 +55,7 @@ const projects = [
     description:
     "Analysis based project aimed at investigating how language models like GPT can unintentionally reveal sensitive or private information about users or system personas during interactions.",
     stack: [{name:"Python"}, {name:"Neural Networks"}],
-    image: '/assets/work/thumb3.png',
+    image: '/om-portfolio/assets/work/thumb3.png',
     live: "",
     github: "",
   },
