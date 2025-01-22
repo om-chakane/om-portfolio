@@ -15,10 +15,10 @@ const about={
   title: 'About Me',
   description:
   "I am a graduate student at University of Southern California, pursuing Masters in Computer Science."+
-  "My interest lies in the domain of Machine Learning, Computer Vision and HCI."+
-  "I love when ML pokes into other businesses, which explains my previous research experience in the healthcare domain. I worked on identifying and verifying association between CVD and RFI Biomarkers." +
-  "Besides, theoretical ML fascinated me during my Masters(actually the math did) and I was happily able to experiment with it in CSCI567 @USC."+
-  "When not in front of my laptop, I love being close to nature, spend time hiking and in solace of my books (and pets)!",
+  " My interest lies in the domain of Machine Learning, Computer Vision and HCI."+
+  " I love when ML pokes into other businesses, which explains my previous research experience in the healthcare domain. I worked on identifying and verifying association between CVD and RFI Biomarkers." +
+  " Besides, theoretical ML fascinated me during my Masters (actually the math did) and I was happily able to experiment with it in CSCI567 @USC."+
+  " When not in front of my laptop, I love being close to nature, spend time hiking and in solace of my books (and pets)!",
   info: [
     {
       fieldName: "Name",
@@ -26,7 +26,7 @@ const about={
     },
     {
       fieldName: "Phone",
-      fieldValue: "(+1)323-620-6793"
+      fieldValue: "(+1) 323-620-6793"
     },
     {
       fieldName: "Nationality",
@@ -98,6 +98,51 @@ const education = {
   ],
 };
 
+const certificates = {
+  title: "Certificates",
+  items: [
+    {
+      name: "Japan Tech Student Exchange Program",
+      source: "Kanagawa Institute of Technology",
+      date: "2022",
+      link: "https://drive.google.com/file/d/1OdczLkp1ye3ARvPnc0pyHNTFIa3-BjjW/view?usp=sharing",
+      thumbnail: "/assets/japan.png"
+    },
+    {
+      name: "Artificial Intelligence and Data Analytics",
+      source: "Extra Credit Program @VIT Pune",
+      date: "2019 - 2021",
+      link: "https://drive.google.com/file/d/1itBUvZruYaTp3vPcnR7Guml8sPfYWcJA/view?usp=sharing",
+      thumbnail: "/assets/AIDA.png"
+    },
+   
+    // Add more certificates as needed
+  ]
+};
+
+// Add the workshops section
+const workshops = {
+  title: "Workshops & Conferences",
+  // description: "A list of workshops and conferences I have participated in and contributed to.",
+  items: [
+    {
+      name: "CHIuXiD Workshop",
+      date: "Nov. 2022",
+      location: "Bali, Indonesia",
+      link: "https://drive.google.com/file/d/1ReBQhlmDeIJnA5Klpo14iaWbwCkgb2i2/view?usp=sharing",
+      description: "Hosted the workshop involving 40 academicians from 9 Asian countries.",
+    },
+    {
+      name: "ACM SIGCHI Workshop",
+      date: "Jun. 2022",
+      location: "Dhaka, Bangladesh",
+      link: "https://sites.google.com/view/sigchi-workshop-bd-22/participants-and-travel-grant?authuser=0",
+      description: "Participant and Travel Grant Award Recipient (USD 250)",
+    },
+  ],
+};
+
+
 const skills = {
   title: "My Skills",
   description:
@@ -138,6 +183,37 @@ const skills = {
   ]
 };
 
+const extracurriculars = {
+  title: "Extracurriculars",
+  items: [
+    {
+      role: "Treasurer - HSO",
+      place: "University of Southern California, LA",
+      tenure: "Jan. 2024 - Present",
+      description: "Managing Finance of the org. along with arrangement of 10+ events celebrating diverse Hindu festivals"
+    },
+    {
+      role: "Volunteer",
+      place: "Stray Cat Alliance, LA",
+      tenure: "Oct. 2023 - Present",
+      description: "Morning shift: Cleaning 20 kennels, Feeding 60 cats in a shift."
+    },
+    {
+      role: "Club Head - Ekasutram",
+      place: "VIT Pune, India",
+      tenure: "Aug. 2021 - Aug. 2022",
+      description: "Worked with 8 other members and guided 18 other core team members. Organized around 20+ mathematics-based activities till date."
+    },
+    {
+      role: "Coordinator - Rescue VITSocials",
+      place: "VIT Pune, India",
+      tenure: "Aug. 2020 - Aug. 2021",
+      description: "Animal Rescue team in VIT, Pune working all over Pune. Rescued and treated around 12 animals."
+    },
+  ]
+};
+
+
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
 import {ScrollArea} from "@/components/ui/scroll-area";
@@ -169,7 +245,10 @@ const Resume = () => {
             <TabsTrigger value="about">About Me</TabsTrigger>
             <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="education">Education</TabsTrigger>
+            <TabsTrigger value="extracurriculars">Extracurriculars</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
+            <TabsTrigger value="certificates">Certificates</TabsTrigger>
+            <TabsTrigger value="workshops">Workshops & Conferences</TabsTrigger>;
           </TabsList>
 
           <div className="min-h-[70vh] w-full">
@@ -236,10 +315,10 @@ const Resume = () => {
             </div>
             <div className="logo">
               {item.institution === "University of Southern California" && (
-                <Image src="/om-portfolio/assets/uscLogo.png" alt="USC Logo" />
+                <Image src="/om-portfolio/assets/uscLogo.png" alt="USC Logo" width={100} height={50}/>
               )}
               {item.institution === "Vishwakarma Institute of Technology" && (
-                <Image src="/om-portfolio/assets/vitLogo.png" alt="VIT Logo" />
+                <Image src="/om-portfolio/assets/vitLogo.png" alt="VIT Logo" width={100} height={50}/>
               )}
             </div>
           </div>
@@ -249,36 +328,125 @@ const Resume = () => {
   </div>
 </TabsContent>
 
+<TabsContent value="extracurriculars" className="w-full">
+  <div className="flex flex-col gap-[30px] text-center xl:text-left">
+    <h3 className="text-4xl font-bold">{extracurriculars.title}</h3>
+    <div className="flex flex-col gap-[30px]">
+      {extracurriculars.items.map((item, index) => (
+        <div
+          key={index}
+          className="bg-[#232329] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-4 cursor-pointer transition-transform duration-300"
+        >
+          <h3 className="text-xl max-w-[260px] min-h-[60px] whitespace-normal leading-tight text-ellipsis overflow-hidden text-center lg:text-left font-semibold text-accent">
+            {item.role}
+          </h3>
+          <p className="text-[#8FA0AB] text-sm italic">
+            {item.place} | {item.tenure}
+          </p>
+          <p className="text-white/80 text-sm mt-2 leading-relaxed lg:text-left">
+            {item.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</TabsContent>
 
 
 
 
-            <TabsContent value="skills" className="w-full h-full">
-              <div className="flex flex-col gap-[30px]">
-                <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                  <h3 className="text-4xl font-bold">{skills.title}</h3>
-                  {/* <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{skills.description}</p> */}
-                </div>
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
-                  {skills.skillList.map((skill, index) => {
-                    return (
-                    <li key={index}>
-                      <TooltipProvider delayDuration={20}>
-                        <Tooltip>
-                          <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                            <div className="text-6xl group-hover:text-accent transition-all duration-300">{skill.icon}</div>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="capitalize">{skill.name}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </TabsContent>
+<TabsContent value="skills" className="w-full h-full">
+  <div className="flex flex-col gap-[30px]">
+    <div className="flex flex-col gap-[30px] text-center xl:text-left">
+      <h3 className="text-4xl font-bold">{skills.title}</h3>
+      {/* <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{skills.description}</p> */}
+    </div>
+    <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
+      {skills.skillList.map((skill, index) => (
+        <li key={index} className="flex flex-col items-center">
+          <div className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center">
+            <div className="text-6xl">{skill.icon}</div>
+          </div>
+          <p className="mt-2 text-center capitalize">{skill.name}</p> {/* Display skill name directly */}
+        </li>
+      ))}
+    </ul>
+  </div>
+</TabsContent>
+
+<TabsContent value="certificates" className="w-full">
+  <div className="flex flex-col gap-[30px] text-center xl:text-left">
+    <h3 className="text-4xl font-bold">{certificates.title}</h3>
+    <ScrollArea className="h-[400px] overflow-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {certificates.items.map((item, index) => (
+          <motion.div
+            key={index}
+            className="bg-[#232329] rounded-xl overflow-hidden shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <Image
+              src={item.thumbnail}
+              alt={item.name}
+              width={300}
+              height={200}
+              className="w-full h-40 object-cover"
+            />
+            <div className="p-4">
+              <h4 className="text-lg font-semibold mb-2">{item.name}</h4>
+              <p className="text-sm text-white/60 mb-2">{item.source}</p>
+              <p className="text-sm text-accent mb-4">{item.date}</p>
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 transition-colors"
+              >
+                View Certificate
+              </a>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </ScrollArea>
+  </div>
+</TabsContent>
+
+<TabsContent value="workshops" className="w-full">
+  <div className="flex flex-col gap-[30px] text-center xl:text-left">
+    <h3 className="text-4xl font-bold">{workshops.title}</h3>
+    <p className="text-white/60 mb-6">{workshops.description}</p>
+
+    <div className="flex flex-col gap-[30px]">
+      {workshops.items.map((item, index) => (
+        <div
+          key={index}
+          className="bg-[#232329] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-4 cursor-pointer transition-transform duration-300"
+        >
+          <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left font-semibold text-accent">
+            {item.name}
+          </h3>
+          <p className="text-sm text-[#8FA0AB] italic">
+            {item.date} | {item.location}
+          </p>
+          <p className="text-white/80 text-sm mt-2 leading-relaxed lg:text-left">
+            {item.description}
+          </p>
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 transition-colors mt-2"
+          >
+            View Details
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</TabsContent>
 
 
             <TabsContent value="about" className="w-full text-center xl:text-left">
@@ -314,7 +482,7 @@ const Resume = () => {
 
     {/* Description Section */}
     <motion.p
-      className="max-w-[600px] mx-auto xl:mx-0 text-white/80 leading-relaxed mt-6"
+      className="max-w-[600px] mx-auto text-justify text-white/80 leading-relaxed mt-6"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}

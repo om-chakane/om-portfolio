@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify"; // Import toast
+import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
 
 const info = [
   {
@@ -48,13 +50,12 @@ const Contact = () => {
     try {
       const response = await axios.post('http://localhost:5000/send-email', formData); // Adjust URL as necessary
       if (response.status === 200) {
-        setStatusMessage('Your message was sent successfully! Thank you for reaching out.');
         setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' }); // Reset form
+        toast.success('Your message was sent successfully! Thank you for reaching out.'); // Show success toast
       }
     } catch (error) {
-      // Display the actual error message in the UI for debugging
       setStatusMessage(`Error: ${error.response ? error.response.data : error.message}`);
-      console.error("Error details:", error.response ? error.response.data : error.message); // Log the full error details
+      toast.error(`Error: ${error.response ? error.response.data : error.message}`); // Show error toast
     }
   };
   
@@ -87,7 +88,6 @@ const Contact = () => {
                 placeholder="Type your message here"
               />
               <Button size="md" className="max-w-40">Send Message</Button>
-              {statusMessage && <p className="text-green-500 mt-4">{statusMessage}</p>} {/* Show status message */}
             </form>
           </div>
           <div className="flex-1 flex items-center xl:justify-end xl:order-1 xl:order-none mb-8 xl:mb-0">
@@ -107,6 +107,9 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
+      {/* Add the ToastContainer to display notifications */}
+      <ToastContainer />
     </motion.section>
   );
 };
