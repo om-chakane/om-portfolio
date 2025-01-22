@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/om-portfolio',    // Replace 'omchakane' with your repo name
+  // basePath: '/om-portfolio',    // Replace 'omchakane' with your repo name
   images: {
     unoptimized: true,
   },

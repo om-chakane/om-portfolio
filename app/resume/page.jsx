@@ -106,14 +106,14 @@ const certificates = {
       source: "Kanagawa Institute of Technology",
       date: "2022",
       link: "https://drive.google.com/file/d/1OdczLkp1ye3ARvPnc0pyHNTFIa3-BjjW/view?usp=sharing",
-      thumbnail: "/assets/japan.png"
+      thumbnail: "/om-portfolio/assets/japan.png"
     },
     {
       name: "Artificial Intelligence and Data Analytics",
       source: "Extra Credit Program @VIT Pune",
       date: "2019 - 2021",
       link: "https://drive.google.com/file/d/1itBUvZruYaTp3vPcnR7Guml8sPfYWcJA/view?usp=sharing",
-      thumbnail: "/assets/AIDA.png"
+      thumbnail: "/om-portfolio/assets/AIDA.png"
     },
    
     // Add more certificates as needed
