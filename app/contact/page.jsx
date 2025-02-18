@@ -1,14 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { ToastContainer, toast } from "react-toastify"; // Import toast
-import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
 
 const info = [
   {
@@ -30,35 +27,25 @@ const info = [
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: "",
   });
-  
-  const [statusMessage, setStatusMessage] = useState('');
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-  
-    try {
-      const response = await axios.post('http://localhost:5000/send-email', formData); // Adjust URL as necessary
-      if (response.status === 200) {
-        setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' }); // Reset form
-        toast.success('Your message was sent successfully! Thank you for reaching out.'); // Show success toast
-      }
-    } catch (error) {
-      setStatusMessage(`Error: ${error.response ? error.response.data : error.message}`);
-      toast.error(`Error: ${error.response ? error.response.data : error.message}`); // Show error toast
-    }
+    setIsModalOpen(true); // Open modal instead of sending data
   };
-  
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -66,19 +53,46 @@ const Contact = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
-      className="py-6"
+      className="py-6 relative"
     >
-      <div className="container mx-auto">
+      {/* Blur effect when modal is open */}
+      <div className={`container mx-auto ${isModalOpen ? "blur-sm" : ""}`}>
         <div className="flex flex-col xl:flex-row gap-[30px]">
           <div className="xl:w-[54%] order-2 xl:order-none">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+            >
               <h3 className="text-4xl text-accent">Your Owl Awaits!</h3>
-              <p className="text-white/60">Drop me a message, and let’s make some magic together!</p>
+              <p className="text-white/60">
+                Drop me a message, and let’s make some magic together!
+              </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
-                <Input name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" />
-                <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Email Address" />
-                <Input name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone Number" />
+                <Input
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  placeholder="First Name"
+                />
+                <Input
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  placeholder="Last Name"
+                />
+                <Input
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email Address"
+                />
+                <Input
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Phone Number"
+                />
               </div>
               <Textarea
                 className="h-[200px]"
@@ -87,7 +101,9 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder="Type your message here"
               />
-              <Button size="md" className="max-w-40">Send Message</Button>
+              <Button size="md" className="max-w-40">
+                Send Message
+              </Button>
             </form>
           </div>
           <div className="flex-1 flex items-center xl:justify-end xl:order-1 xl:order-none mb-8 xl:mb-0">
@@ -108,8 +124,20 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Add the ToastContainer to display notifications */}
-      <ToastContainer />
+      {/* Modal Pop-up */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
+            <h2 className="text-xl font-semibold mb-4">Oops! 🚧</h2>
+            <p className="text-gray-700 mb-4">
+              Form in progress! While it's getting a facelift, why not email me instead? I'll respond faster than you can say 'oops!'
+            </p>
+            <Button onClick={() => setIsModalOpen(false)} className="mt-2">
+              Close
+            </Button>
+          </div>
+        </div>
+      )}
     </motion.section>
   );
 };
