@@ -130,7 +130,7 @@ const Contact = () => {
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
             <h2 className="text-xl font-semibold mb-4">Oops! 🚧</h2>
             <p className="text-gray-700 mb-4">
-              Form in progress! While it's getting a facelift, why not email me instead? I'll respond faster than you can say 'oops!'
+              Form in progress! While it&apos;s getting a facelift, why not email me instead? I&apos;ll respond faster than you can say &apos;oops!&apos;
             </p>
             <Button onClick={() => setIsModalOpen(false)} className="mt-2">
               Close
